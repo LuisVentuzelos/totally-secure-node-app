@@ -1,6 +1,5 @@
-# Express Postgres Starter
-
-> A starter project for Node.js with Express and Postgres
+# Totally Secure Node App
+Vulnerable Express Framework Project 
 
 ## Setup
 
