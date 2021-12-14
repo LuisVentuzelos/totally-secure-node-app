@@ -9,7 +9,7 @@ module.exports = {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const {rows} = await db.query(sql`
-      INSERT INTO users (id, email, password)
+      INSERT INTO users(id, email, password)
         VALUES (${uuidv4()}, ${email}, ${hashedPassword})
         RETURNING id, email;
       `);
@@ -25,9 +25,8 @@ module.exports = {
     }
   },
   async find(email) {
-    const {rows} = await db.query(sql`
-    SELECT * FROM users WHERE email=${email} LIMIT 1;
-    `);
-    return rows[0];
+    var sqlQuery = 'SELECT * FROM users WHERE email=' + email + ';'
+    const {rows} = await db.query(sqlQuery);
+    return rows;
   }
 };
