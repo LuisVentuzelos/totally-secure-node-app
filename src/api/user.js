@@ -45,10 +45,8 @@ router.post('/login', async (request, response) => {
         .json({message: 'email and password must be provided'});
     }
 
-    //const user = await User.find(email);
-    var sqlQuery = 'SELECT * FROM users WHERE email=' + email + ';'
-    const {rows} = await db.query(sqlQuery);
-    user =  rows;
+    const user = await User.find(email);
+
     if (!user) {
       return response.status(400).json({message: 'User already exists'});
     }

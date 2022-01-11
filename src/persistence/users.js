@@ -25,8 +25,8 @@ module.exports = {
     }
   },
   async find(email) {
-    var sqlQuery = 'SELECT * FROM users WHERE email=' + email + ';'
+    var sqlQuery = `SELECT * FROM users WHERE email='` + email + `';`
     const {rows} = await db.query(sqlQuery);
-    return rows;
+    return rows[0];
   }
 };
